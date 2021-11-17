@@ -1,0 +1,50 @@
+<ng-container *ngIf="ciudades.length>1; else isEmpty">
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Código</th>
+                <th scope="col">País</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let city of ciudades; let i = index; even as isEven;">
+                <tr [ngClass]="{ 'even' : isEven }">
+                    <th scope="row">{{ i }}</th>
+                    <td>{{ city.nombre }}</td>
+                    <td>{{ city.codigo }}</td>
+                    <td>{{ city.pais }}</td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</ng-container>
+<ng-template #isEmpty>
+    <div>
+        <h1>No hay ciudades que mostrar en la Base de Datos</h1>
+    </div>
+</ng-template>
+
+
+
+
+
+<!--  TABLA con Angular Material
+
+<table mat-table [dataSource]="ciudades">
+    <ng-container matColumnDef="Ciudad">
+        <th mat-header-cell *matHeaderCellDef> Ciudad </th>
+        <td mat-cell *matCellDef="let user"> {{user.nombre}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Codigo">
+        <th mat-header-cell *matHeaderCellDef> Código </th>
+        <td mat-cell *matCellDef="let user"> {{user.codigo}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Pais">
+        <th mat-header-cell *matHeaderCellDef> País </th>
+        <td mat-cell *matCellDef="let user"> {{user.pais}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr> 
+</table> -->
